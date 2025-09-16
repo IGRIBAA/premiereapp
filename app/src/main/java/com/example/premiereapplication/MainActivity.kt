@@ -17,11 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.premiereapplication.ui.theme.PremiereApplicationTheme
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -61,14 +65,25 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EventDetails(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
-        // Image de l'événement
-        Image(
+        /*Image(
             painter = painterResource(id = R.drawable.capture),
             contentDescription = "Affiche de l'événement",
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp),
             contentScale = ContentScale.Crop
+        )*/
+        val imageUrl = "https://wpadmin.uk2.net/app/uploads/sites/4/2016/06/shutterstock_441169243-770x514.jpg"
+
+        AsyncImage(
+            model = imageUrl,
+
+            contentDescription = "Affiche de l'événement",
+            modifier = modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .padding(bottom = 16.dp),
+        contentScale = ContentScale.Crop
         )
 
         Text(
